@@ -2,6 +2,9 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import svgr from 'vite-plugin-svgr';
 
+const BACKEND_DOMAIN= process.env.BACKEND_DOMAIN || 'http://localhost:3001';
+const CLIENT_PORT= parseInt(process.env.CLIENT_PORT, 10 ) || 3000;
+
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react({
@@ -22,5 +25,5 @@ export default defineConfig({
     },
   }),
   svgr({ include: '**/*.svg?react' })],
-  server: {port: 3000, proxy: { "/api": "http://localhost:3001" } }
+  server: {port: CLIENT_PORT, proxy: { "/api": BACKEND_DOMAIN } }
 })

@@ -9,7 +9,7 @@ import { createPostgresDataProvider } from "remult/postgres"
 
 const PORT = process.env["PORT"] || 3001
 const DATABASE_URL = process.env["DATABASE_URL"];
-const IP_WHITELIST = process.env["IP_WHITELIST"] || ['::1'];
+const IP_WHITELIST = process.env["IP_WHITELIST"]?.split(", ") || ['::1'];
 
 console.log("DATABASE_URL", DATABASE_URL);
 console.log("IP_WHITELIST", IP_WHITELIST);
